@@ -16,8 +16,13 @@ namespace Application.Features.Brands.Rules
 
         public async Task BrandNameCanNotBeDublicatedWhenInserted(string name)
         {
-            IPaginate<Brand> resut=await _brandRepository.GetListAsync(b=>b.Name==name);
+            IPaginate<Brand> resut = await _brandRepository.GetListAsync(b => b.Name == name);
             if (resut.Items.Any()) throw new BusinessException("Brand Name Exit.");
+        }
+
+        public void BrandShouldExistWhenRequested(Brand brand)
+        {
+            if (brand == null) throw new BusinessException("Requested Brand does not Exit.");
         }
     }
 }
