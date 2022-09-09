@@ -11,6 +11,8 @@ namespace Domain.Entities
     {
         public string Name { get; set; }
 
+        public ICollection<Model> Models { get; set; }
+
         public Brand(){ }
 
         public Brand(int id):this()
@@ -18,7 +20,7 @@ namespace Domain.Entities
             Id = id;
         }
 
-        public Brand(int id,string name):this()
+        public Brand(int id,string name)
         {
             Id = id;
             Name = name;
